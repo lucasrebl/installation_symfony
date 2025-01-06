@@ -45,6 +45,11 @@
       COPY . /app
       ```
 
+    - Créer un fichier php.ini et ajouter y le code ci-dessous
+      ```bash
+      extension=pdo_mysql
+      ```
+
     - Créer un fichier docker-compose.yml et ajouter y le code ci-dessous
       ```bash
       services:
@@ -55,6 +60,7 @@
             - "8080:8000"
           volumes:
             - .:/app
+            - ./php.ini:/usr/local/etc/php/php.ini
           depends_on:
             - database
       
@@ -155,11 +161,31 @@
       docker exec -it symfony_mysql mysql -u root -p
       ```
       ici symfony_mysql et le nom du container dans le docker-compose.yml pense à le changer si vous l'avez modifier dans votre fichier.
-      ensuite un mot de passe vous seras demander, le mot de passe et dans le fichier docker-compose.yml sous le nom de 'MYSQL_ROOT_PASSWORD'
+      ensuite un mot de passe vous seras demander, le mot de passe et dans le fichier docker-compose.yml, ici c'est 'symfony_root_password'
       ![image](https://github.com/user-attachments/assets/21858610-4657-4f66-b173-562cd00246e8)
 
+    - Une fois connecter vous devez créer un utilisateur MySQL en éxécutant les commande suivante
+      ```bash
+      CREATE USER 'symfony_user'@'%' IDENTIFIED BY 'symfony_password';
+      ```
+      
+      ```bash
+      GRANT ALL PRIVILEGES ON symfony_db.* TO 'symfony_user'@'%';
+      ```
+      
+      ```bash
+      FLUSH PRIVILEGES;
+      ```
 
+      n'oubliez pas de remplacer ce qui est entre les guillemet par ce que vous avez dans votre docker-compose.yml
+      
+    - une fois fini vous pouvez taper exit pour sortir et taper la commande suivante pour tester de créer la base de données
+      ```bash
+      docker exec -it symfony2_app php bin/console doctrine:database:create
+      ```
 
+      si tous fonctionne bien vous devrez avoir un message indiquant la création de la BDD comme ci-dessous
+      ![image](https://github.com/user-attachments/assets/5e983a4a-e530-4415-b6d0-2343a827612e)
 
 
       
