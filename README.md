@@ -147,3 +147,19 @@
       ```bash
       docker-compose up -d
       ```
+
+  - 3eme étape : Créer un utilisateur MySQL
+
+    - Dans votre terminal taper la commande suivante
+      ```bash
+      docker exec -it symfony_mysql mysql -u root -p
+      ```
+      ici symfony_mysql et le nom du container dans le docker-compose.yml pense à le changer si vous l'avez modifier dans votre fichier.
+      ensuite un mot de passe vous seras demander, le mot de passe et dans le fichier docker-compose.yml sous le nom de 'MYSQL_ROOT_PASSWORD'
+      ![image](https://github.com/user-attachments/assets/21858610-4657-4f66-b173-562cd00246e8)
+
+
+
+
+
+      
