@@ -188,4 +188,17 @@
       ![image](https://github.com/user-attachments/assets/5e983a4a-e530-4415-b6d0-2343a827612e)
 
   - 4eme étape : aller sur ce lien pour vérifier http://localhost:8000/ que votre application symfony se lance correctement
-      
+
+  - 5eme étape : se connecter à un client de base de données pour pouvoir intéragir avec notre BDD (ici j'utiliserais beekeeper studio)
+
+    - choisissez une nouvelle connexion MySQL
+      ![image](https://github.com/user-attachments/assets/830e79a0-a574-4c53-a9b0-3440ed34dfd6)
+
+    - remplisser les champs nécessaire avec ce que vous avez dans votre fichier docker-compose.yml
+      ![image](https://github.com/user-attachments/assets/83494c05-023a-44af-910f-3c06aa0c3deb)
+
+    - et pour finir il suffit de vous connecter pour avoir accès à votre BDD
+   
+  # Conclusion
+
+    j'espère que cela vous à aider, si vous avez une question n'hésitez pas à me contacter à l'adresse mail suivnate : rebouletlucas@gmail.com
