@@ -46,5 +46,104 @@
       ```
 
     - Créer un fichier docker-compose.yml et ajouter y le code ci-dessous
+      ```bash
+      services:
+        app:
+          build: .
+          container_name: symfony_app
+          ports:
+            - "8080:8000"
+          volumes:
+            - .:/app
+          depends_on:
+            - database
+      
+        database:
+          image: mysql:8.0.32
+          container_name: symfony_mysql
+          environment:
+            MYSQL_ROOT_PASSWORD: symfony_root_password
+            MYSQL_DATABASE: symfony_db
+            MYSQL_USER: symfony_user
+            MYSQL_PASSWORD: symfony_password
+          ports:
+            - "3306:3306"
+          volumes:
+            - db_data:/var/lib/mysql
+      
+        nginx:
+          image: nginx:latest
+          container_name: symfony_nginx
+          ports:
+            - "8000:80"
+          volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./snippets:/etc/nginx/snippets:ro 
+            - .:/app
+          depends_on:
+            - app
+      
+      volumes:
+        db_data:
+      ```
 
-    
+      n'oublier pas de remplacer tous les endroit ou il y'a symfony pas le nom de votre application ou autre, cela vous permettera de mieux reconnaitre votre conteneur etc...
+
+    - Créer un fichier nginx.conf et ajouter y le code ci-dessous
+      ```bash
+      worker_processes auto;
+
+      events {
+          worker_connections 1024;
+      }
+      
+      http {
+          include       /etc/nginx/mime.types;
+          default_type  application/octet-stream;
+
+          server {
+              listen 80;
+              server_name localhost;
+      
+              root /app/public;
+              index index.php index.html;
+      
+              location / {
+                  try_files $uri /index.php$is_args$args;
+              }
+      
+              location ~ ^/index\.php(/|$) {
+                  fastcgi_pass symfony_app:9000;
+                  fastcgi_param SCRIPT_FILENAME /app/public/index.php;
+                  include fastcgi_params;
+              }
+      
+              location ~ \.php$ {
+                  include /etc/nginx/snippets/fastcgi-php.conf;
+                  fastcgi_pass symfony_app:9000;
+                  fastcgi_param SCRIPT_FILENAME /app/public$fastcgi_script_name;
+              }
+          }
+      }
+      ```
+
+      pareil ici n'oubliez pas de remplacer symfony par le nom de votre application
+
+    - Créer un dossier snippets et à l'intérieur créer un fichier fastcgi-php.conf et ajouter y le code ci-dessous
+      ```bash
+      fastcgi_split_path_info ^(.+\.php)(/.+)$;
+      fastcgi_index index.php;
+      include fastcgi_params;
+      ```
+
+    - Créer un fichier .env.local et ajouter y le code ci-dessous
+      ```bash
+      DATABASE_URL="mysql://symfony_user:symfony_password@database:3306/symfony_db?serverVersion=8.0.32&charset=utf8mb4"
+      ```
+
+      ici aussi n'oubliez pas de remplacer symfony_user etc... par ce que vous avez dans votre fichier docker-compose.yml
+
+    - et pour finir avec cette 2eme étape exécuter la commande suivante
+      ```bash
+      docker-compose up -d
+      ```
