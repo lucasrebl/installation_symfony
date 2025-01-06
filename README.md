@@ -55,7 +55,7 @@
       services:
         app:
           build: .
-          container_name: symfony_app
+          container_name: symfony2_app
           ports:
             - "8080:8000"
           volumes:
@@ -66,12 +66,12 @@
       
         database:
           image: mysql:8.0.32
-          container_name: symfony_mysql
+          container_name: symfony2_mysql
           environment:
             MYSQL_ROOT_PASSWORD: symfony_root_password
-            MYSQL_DATABASE: symfony_db
-            MYSQL_USER: symfony_user
-            MYSQL_PASSWORD: symfony_password
+            MYSQL_DATABASE: symfony2_db
+            MYSQL_USER: symfony2_user
+            MYSQL_PASSWORD: symfony2_password
           ports:
             - "3306:3306"
           volumes:
@@ -79,7 +79,7 @@
       
         nginx:
           image: nginx:latest
-          container_name: symfony_nginx
+          container_name: symfony2_nginx
           ports:
             - "8000:80"
           volumes:
@@ -93,7 +93,7 @@
         db_data:
       ```
 
-      n'oublier pas de remplacer tous les endroit ou il y'a symfony pas le nom de votre application ou autre, cela vous permettera de mieux reconnaitre votre conteneur etc...
+      n'oublier pas de remplacer tous les endroit ou il y'a symfony2 pas le nom de votre application ou autre, cela vous permettera de mieux reconnaitre votre conteneur etc...
 
     - Créer un fichier nginx.conf et ajouter y le code ci-dessous
       ```bash
@@ -119,21 +119,21 @@
               }
       
               location ~ ^/index\.php(/|$) {
-                  fastcgi_pass symfony_app:9000;
+                  fastcgi_pass symfony2_app:9000;
                   fastcgi_param SCRIPT_FILENAME /app/public/index.php;
                   include fastcgi_params;
               }
       
               location ~ \.php$ {
                   include /etc/nginx/snippets/fastcgi-php.conf;
-                  fastcgi_pass symfony_app:9000;
+                  fastcgi_pass symfony2_app:9000;
                   fastcgi_param SCRIPT_FILENAME /app/public$fastcgi_script_name;
               }
           }
       }
       ```
 
-      pareil ici n'oubliez pas de remplacer symfony par le nom de votre application
+      pareil ici n'oubliez pas de remplacer symfony2 par le nom de votre application
 
     - Créer un dossier snippets et à l'intérieur créer un fichier fastcgi-php.conf et ajouter y le code ci-dessous
       ```bash
@@ -144,10 +144,10 @@
 
     - Créer un fichier .env.local et ajouter y le code ci-dessous
       ```bash
-      DATABASE_URL="mysql://symfony_user:symfony_password@database:3306/symfony_db?serverVersion=8.0.32&charset=utf8mb4"
+      DATABASE_URL="mysql://symfony2_user:symfony2_password@database:3306/symfony2_db?serverVersion=8.0.32&charset=utf8mb4"
       ```
 
-      ici aussi n'oubliez pas de remplacer symfony_user etc... par ce que vous avez dans votre fichier docker-compose.yml
+      ici aussi n'oubliez pas de remplacer symfony2_user etc... par ce que vous avez dans votre fichier docker-compose.yml
 
     - et pour finir avec cette 2eme étape exécuter la commande suivante
       ```bash
@@ -158,7 +158,7 @@
 
     - Dans votre terminal taper la commande suivante
       ```bash
-      docker exec -it symfony_mysql mysql -u root -p
+      docker exec -it symfony2_mysql mysql -u root -p
       ```
       ici symfony_mysql et le nom du container dans le docker-compose.yml pense à le changer si vous l'avez modifier dans votre fichier.
       ensuite un mot de passe vous seras demander, le mot de passe et dans le fichier docker-compose.yml, ici c'est 'symfony_root_password'
@@ -166,11 +166,11 @@
 
     - Une fois connecter vous devez créer un utilisateur MySQL en éxécutant les commande suivante
       ```bash
-      CREATE USER 'symfony_user'@'%' IDENTIFIED BY 'symfony_password';
+      CREATE USER 'symfony2_user'@'%' IDENTIFIED BY 'symfony2_password';
       ```
       
       ```bash
-      GRANT ALL PRIVILEGES ON symfony_db.* TO 'symfony_user'@'%';
+      GRANT ALL PRIVILEGES ON symfony2_db.* TO 'symfony2_user'@'%';
       ```
       
       ```bash
