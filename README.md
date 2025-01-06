@@ -23,4 +23,10 @@
 
     attention on vous demanderas si vous voulez utilisé docker, vous dever répondre non.
 
-  - 2eme étape : 
+    une fois ceci fait vous pouvez ouvrir votre projet dans un IDE
+
+  - 2eme étape : configuration de l'environement
+
+    - aller dans le fichier .env et commenter la ligne DATABASE_URL
+    - ![image](https://github.com/user-attachments/assets/00724a9d-b36c-47c1-96dd-3d3f97b5cf65)
+
