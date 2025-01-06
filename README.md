@@ -8,13 +8,17 @@
 # Installtion
 
   - 1er étape : créer l'appli symfony de base
-    ```composer create-project symfony/skeleton:"7.2.x" my_project_directory
+
+    ```bash
+    composer create-project symfony/skeleton:"7.2.x" my_project_directory
     ```
 
-    ```cd my_project_directory
+    ```bash
+    cd my_project_directory
     ```
 
-    ```composer require webapp
+    ```bash
+    composer require webapp
     ```
 
     attention on vous demanderas si vous voulez utilisé docker, vous dever répondre non.
