@@ -3,7 +3,7 @@
 # Prérequis
   - composer
   - version de php surperieur à 8.1
-  - node.js (optionnel mais conseiller)
+  - node.js (optionnel, mais conseiller)
 
 # Installtion
 
@@ -21,9 +21,9 @@
     composer require webapp
     ```
 
-    attention on vous demanderas si vous voulez utilisé docker, vous dever répondre non.
+    attention on vous demandera si vous voulez utilisé docker, vous dever répondre non.
 
-    une fois ceci fait vous pouvez ouvrir votre projet dans un IDE
+    une fois, ceci fait, vous pouvez ouvrir votre projet dans un IDE
 
   - 2eme étape : Configuration de l'environement
 
@@ -93,7 +93,7 @@
         db_data:
       ```
 
-      n'oublier pas de remplacer tous les endroit ou il y'a symfony2 pas le nom de votre application ou autre, cela vous permettera de mieux reconnaitre votre conteneur etc...
+      n'oublier pas de remplacer tous les endroit ou il y'a symfony2 pas le nom de votre application ou autre, cela vous permettera de mieux reconnaitre votre conteneur, etc...
 
     - Créer un fichier nginx.conf et ajouter y le code ci-dessous
       ```bash
@@ -201,4 +201,4 @@
    
   # Conclusion
 
-  j'espère que cela vous à aider, si vous avez une question n'hésitez pas à me contacter à l'adresse mail suivnate : rebouletlucas@gmail.com
+  j'espère que cela vous à aider, si vous avez une question n'hésitez pas à me contacter à l'adresse mail suivante : rebouletlucas@gmail.com
