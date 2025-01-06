@@ -187,5 +187,5 @@
       si tous fonctionne bien vous devrez avoir un message indiquant la création de la BDD comme ci-dessous
       ![image](https://github.com/user-attachments/assets/5e983a4a-e530-4415-b6d0-2343a827612e)
 
-
+  - 4eme étape : aller sur ce lien pour vérifier http://localhost:8000/ que votre application symfony se lance correctement
       
