@@ -39,7 +39,7 @@
           libpq-dev \
           libzip-dev \
           unzip \
-          && docker-php-ext-installs
+          && docker-php-ext-install pdo pdo_mysql zip
       
       WORKDIR /app
       COPY . /app
