@@ -179,13 +179,6 @@
 
       n'oubliez pas de remplacer ce qui est entre les guillemet par ce que vous avez dans votre docker-compose.yml
       
-    - une fois fini vous pouvez taper exit pour sortir et taper la commande suivante pour tester de créer la base de données
-      ```bash
-      docker exec -it symfony2_app php bin/console doctrine:database:create
-      ```
-
-      si tous fonctionne bien vous devrez avoir un message indiquant la création de la BDD comme ci-dessous
-      ![image](https://github.com/user-attachments/assets/5e983a4a-e530-4415-b6d0-2343a827612e)
 
   - 4eme étape : aller sur ce lien pour vérifier http://localhost:8000/ que votre application symfony se lance correctement
 
