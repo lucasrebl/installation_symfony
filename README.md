@@ -94,6 +94,7 @@
       ```
 
       n'oublier pas de remplacer tous les endroit ou il y'a symfony2 pas le nom de votre application ou autre, cela vous permettera de mieux reconnaitre votre conteneur, etc...
+      et pensez à changer les ports si nécessaire
 
     - Créer un fichier nginx.conf et ajouter y le code ci-dessous
       ```bash
