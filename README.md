@@ -192,7 +192,3 @@
       ![image](https://github.com/user-attachments/assets/83494c05-023a-44af-910f-3c06aa0c3deb)
 
     - et pour finir il suffit de vous connecter pour avoir accès à votre BDD
-   
-  # Conclusion
-
-  j'espère que cela vous à aider, si vous avez une question n'hésitez pas à me contacter à l'adresse mail suivante : rebouletlucas@gmail.com
