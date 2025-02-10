@@ -1,4 +1,4 @@
-# Tuto pour installer symfony, le dockerisé et ce connecter à ça database avec beekeeper
+# Tuto pour installer symfony, le dockerisé et ce connecter à ça database avec Beekeeper Studio
 
 # Prérequis
   - composer
